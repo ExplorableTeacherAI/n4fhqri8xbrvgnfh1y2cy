@@ -297,7 +297,7 @@ export const blocks: ReactElement[] = [
     <SplitLayout key="layout-direct-interactive" ratio="1:1" gap="lg">
         <Block id="direct-interactive-text" padding="sm">
             <EditableParagraph id="para-direct-interactive-text" blockId="direct-interactive-text">
-                In the chart on the right, you can see the <InlineLinkedHighlight varName="directHighlight" highlightId="directLine" color="#62D0AD">straight line</InlineLinkedHighlight> that represents direct proportion. Notice how it passes through the origin (0, 0). That is a key feature of direct proportion!
+                In the chart on the right, you can see the <InlineLinkedHighlight varName="directHighlight" highlightId="directLine" color="#62D0AD">straight line</InlineLinkedHighlight> that represents direct proportion. Notice how it passes through the <InlineLinkedHighlight varName="directHighlight" highlightId="origin" color="#F7B23B">origin (0, 0)</InlineLinkedHighlight>. That is a key feature of direct proportion!
             </EditableParagraph>
             <div className="mt-4">
                 <EditableParagraph id="para-direct-scrub-intro" blockId="direct-interactive-text">
