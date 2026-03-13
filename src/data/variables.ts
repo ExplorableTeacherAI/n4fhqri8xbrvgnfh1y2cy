@@ -1,12 +1,12 @@
 /**
  * Variables Configuration
  * =======================
- * 
+ *
  * CENTRAL PLACE TO DEFINE ALL SHARED VARIABLES
- * 
+ *
  * This file defines all variables that can be shared across sections.
  * AI agents should read this file to understand what variables are available.
- * 
+ *
  * USAGE:
  * 1. Define variables here with their default values and metadata
  * 2. Use them in any section with: const x = useVar('variableName', defaultValue)
@@ -55,106 +55,140 @@ export interface VariableDefinition {
  * =====================================================
  * 🎯 DEFINE YOUR VARIABLES HERE
  * =====================================================
- * 
- * SUPPORTED TYPES:
- * 
- * 1. NUMBER (slider):
- *    { defaultValue: 5, type: 'number', min: 0, max: 10, step: 1 }
- * 
- * 2. TEXT (free text):
- *    { defaultValue: 'Hello', type: 'text', placeholder: 'Enter text...' }
- * 
- * 3. SELECT (dropdown):
- *    { defaultValue: 'sine', type: 'select', options: ['sine', 'cosine', 'tangent'] }
- * 
- * 4. BOOLEAN (toggle):
- *    { defaultValue: true, type: 'boolean' }
- * 
- * 5. ARRAY (list of numbers):
- *    { defaultValue: [1, 2, 3], type: 'array' }
- * 
- * 6. OBJECT (complex data):
- *    { defaultValue: { x: 5, y: 10 }, type: 'object', schema: '{ x: number, y: number }' }
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
     // ========================================
-    // ADD YOUR VARIABLES HERE
+    // DIRECT PROPORTION VARIABLES
     // ========================================
-
-    // Uncomment and modify these examples for your lesson:
-
-    /*
-    // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
-    // ─────────────────────────────────────────
-    myValue: {
-        defaultValue: 5,
+    directConstantK: {
+        defaultValue: 2,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
+        label: 'Constant k (Direct)',
+        description: 'The constant of proportionality for direct proportion y = kx',
+        min: 0.5,
+        max: 5,
+        step: 0.5,
+        color: '#62D0AD',
+    },
+    directX: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'X Value (Direct)',
+        description: 'The x value for direct proportion',
         min: 0,
         max: 10,
-        step: 0.5,
+        step: 1,
+        color: '#8E90F5',
     },
 
-    // ─────────────────────────────────────────
-    // TEXT - Free text input
-    // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
+    // ========================================
+    // INVERSE PROPORTION VARIABLES
+    // ========================================
+    inverseConstantK: {
+        defaultValue: 12,
+        type: 'number',
+        label: 'Constant k (Inverse)',
+        description: 'The constant of proportionality for inverse proportion y = k/x',
+        min: 4,
+        max: 24,
+        step: 2,
+        color: '#F7B23B',
+    },
+    inverseX: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'X Value (Inverse)',
+        description: 'The x value for inverse proportion',
+        min: 1,
+        max: 10,
+        step: 1,
+        color: '#AC8BF9',
+    },
+
+    // ========================================
+    // COMPARISON VARIABLES
+    // ========================================
+    comparisonK: {
+        defaultValue: 6,
+        type: 'number',
+        label: 'Constant k (Comparison)',
+        description: 'Shared constant for comparing direct and inverse',
+        min: 2,
+        max: 12,
+        step: 1,
+        color: '#62CCF9',
+    },
+
+    // ========================================
+    // PRACTICE QUESTION ANSWERS
+    // ========================================
+    answerDirectCalculation: {
+        defaultValue: '',
         type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
+        label: 'Direct Proportion Calculation Answer',
+        description: 'Student answer for direct proportion calculation',
+        placeholder: '?',
+        correctAnswer: '20',
+        color: '#62D0AD',
     },
-
-    // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
-    // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
+    answerInverseCalculation: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Inverse Proportion Calculation Answer',
+        description: 'Student answer for inverse proportion calculation',
+        placeholder: '?',
+        correctAnswer: '3',
+        color: '#F7B23B',
+    },
+    answerProportionType: {
+        defaultValue: '',
         type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
+        label: 'Proportion Type Answer',
+        description: 'Student choice for identifying proportion type',
+        placeholder: '???',
+        correctAnswer: 'inverse',
+        options: ['direct', 'inverse'],
+        color: '#8E90F5',
+    },
+    answerProportionTypeDirect: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Direct Proportion Type Answer',
+        description: 'Student choice for identifying direct proportion',
+        placeholder: '???',
+        correctAnswer: 'direct',
+        options: ['direct', 'inverse'],
+        color: '#62D0AD',
+    },
+    answerFindK: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Find K Answer',
+        description: 'Student answer for finding the constant k',
+        placeholder: '?',
+        correctAnswer: '5',
+        color: '#AC8BF9',
     },
 
-    // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
-    // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
-        type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
+    // ========================================
+    // LINKED HIGHLIGHT VARIABLES
+    // ========================================
+    directHighlight: {
+        defaultValue: '',
+        type: 'linkedHighlight',
+        label: 'Direct Proportion Highlight',
+        description: 'Linked highlight for direct proportion visualization',
+        color: '#62D0AD',
+        bgColor: 'rgba(98, 208, 173, 0.15)',
     },
-
-    // ─────────────────────────────────────────
-    // ARRAY - List of numbers
-    // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
+    inverseHighlight: {
+        defaultValue: '',
+        type: 'linkedHighlight',
+        label: 'Inverse Proportion Highlight',
+        description: 'Linked highlight for inverse proportion visualization',
+        color: '#F7B23B',
+        bgColor: 'rgba(247, 178, 59, 0.15)',
     },
-
-    // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
-    // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
-    },
-    */
 };
 
 /**
